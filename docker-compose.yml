@@ -1,0 +1,22 @@
+version: '3.1'
+services:
+  mysql-db:
+    image: mysql
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3306:3306"
+    volumes:
+      - yoruhinda:/var/lib/mysql
+  app:
+    image: yoruhinda/bookstore:v1
+    container_name: bookstore
+    depends_on:
+      - mysql-db
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/bookstore?useSSL=false&createDatabaseIfNotExist=true&allowPublicKeyRetrieval=true
+    ports:
+      - "8080:8080"
+volumes:
+  yoruhinda:

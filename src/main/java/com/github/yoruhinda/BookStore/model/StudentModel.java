@@ -13,7 +13,7 @@ import java.time.LocalDate;
 @Getter
 @Setter
 @NoArgsConstructor
-public class Student implements Serializable {
+public class StudentModel implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long student_id;
@@ -27,6 +27,4 @@ public class Student implements Serializable {
     private LocalDate loan_date;
     @Column(name = "devolution", nullable = true, columnDefinition = "TINYINT", length = 1)
     private boolean devolution;
-    @Column(name = "expired", nullable = true, columnDefinition = "TINYINT", length = 1)
-    private boolean expired;
 }
